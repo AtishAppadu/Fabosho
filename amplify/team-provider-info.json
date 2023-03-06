@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-faboshov2-dev-200516-authRole",
+      "UnauthRoleArn": "arn:aws:iam::077401770601:role/amplify-faboshov2-dev-200516-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::077401770601:role/amplify-faboshov2-dev-200516-authRole",
+      "Region": "eu-west-2",
+      "DeploymentBucketName": "amplify-faboshov2-dev-200516-deployment",
+      "UnauthRoleName": "amplify-faboshov2-dev-200516-unauthRole",
+      "StackName": "amplify-faboshov2-dev-200516",
+      "StackId": "arn:aws:cloudformation:eu-west-2:077401770601:stack/amplify-faboshov2-dev-200516/3797fee0-bc5a-11ed-85b2-0a5a83534dbe",
+      "AmplifyAppId": "d16tk4ermhm2xg"
+    },
+    "categories": {
+      "auth": {
+        "faboshov29e0dfa42": {}
+      }
+    }
+  }
+}
