@@ -1,3 +1,4 @@
+@import url("reset.css");
 html {
     font-size: 62.5%;
 }
@@ -5,6 +6,7 @@ html {
 body {
     margin: 0;
     font-family: 'Poppins';
+    background-color: white;
 }
 
 .wrapper {
@@ -242,4 +244,31 @@ nav ul li a:hover:before {
 .secondary-cta:hover {
     text-decoration: none;
     color: black;
+}
+
+
+/* login page styling*/
+
+
+/* back button styling */
+
+.back-btn {
+    width: 10%;
+    height: 100px;
+    left: auto;
+    text-decoration: none;
+    transform: scale(2.5);
+}
+
+.back-btn svg {
+    color: red;
+    margin: 0%;
+    outline: white;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+button.back-btn {
+    padding: 0%;
+    margin: 0%;
 }
