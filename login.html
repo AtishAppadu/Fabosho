@@ -8,6 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@200;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+   
+    <!-- Javascript SDK -->
+    <script src="/path/to/amazon-cognito-identity.min.js"></script>
+    <script src="/path/to/amazon-cognito-auth.min.js"></script>
+    <script src="/config.js"></script>
+
 
     <script src="script.js">
     </script>
@@ -69,6 +75,49 @@
         </div>
     </div>
 
+
+    <script>
+
+        var email;
+        var password;
+        var poolData;
+
+        function loginButton() {
+            email = document.getElementById("email").value;
+            password = document.getElementById("password").value;
+            poolData = {
+                UserPoolId: _config.cognito.userPoolId,
+                ClientId: _config.cognito.userPoolClientId
+            };
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+            var authenticationData = {
+                Username: email,
+                Password: password
+            };
+            var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(authenticationData);
+            var userData = {
+                Username: email,
+                Pool: userPool
+            };
+            var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            cognitoUser.authenticateUser(authenticationDetails, {
+                onSuccess: function (result) {
+                    console.log('access token + ' + result.getAccessToken().getJwtToken());
+                    console.log('id token + ' + result.getIdToken().getJwtToken());
+                    console.log('refresh token + ' + result.getRefreshToken().getToken());
+                    window.location.href = "index.html";
+                },
+                onFailure: function (err) {
+                    alert(err.message || JSON.stringify(err));
+                },
+            });
+
+        }
+
+
+
+
+    </script>
 </body>
 
 </html>

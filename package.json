@@ -1,6 +1,10 @@
 {
   "dependencies": {
     "@aws-amplify/ui-react": "^4.3.9",
+    "amazon-cognito-identity-js": "^6.1.2",
     "aws-amplify": "^5.0.16"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.0.1"
   }
 }
