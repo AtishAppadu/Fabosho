@@ -1,0 +1,22 @@
+2023-03-06T18:24:53.740Z|info : amplify add api  
+2023-03-06T18:24:53.940Z|info : amplify-cli-core.banner-message/index.ts.fetch banner messages from https://aws-amplify.github.io/amplify-cli/banner-message.json({}
+2023-03-06T18:27:28.000Z|info : amplify push core  {"yes":true}
+2023-03-06T18:27:28.091Z|info : amplify-cli-core.banner-message/index.ts.fetch banner messages from https://aws-amplify.github.io/amplify-cli/banner-message.json({}
+2023-03-06T18:28:42.235Z|info : amplify upgrade core  
+2023-03-06T18:28:42.321Z|info : amplify-cli-core.banner-message/index.ts.fetch banner messages from https://aws-amplify.github.io/amplify-cli/banner-message.json({}
+2023-03-06T18:29:53.306Z|info : amplify console api  
+2023-03-06T18:29:53.373Z|info : amplify-cli-core.banner-message/index.ts.fetch banner messages from https://aws-amplify.github.io/amplify-cli/banner-message.json({}
+2023-03-06T18:30:32.875Z|info : amplify console core  
+2023-03-06T18:30:32.950Z|info : amplify-cli-core.banner-message/index.ts.fetch banner messages from https://aws-amplify.github.io/amplify-cli/banner-message.json({}
+2023-03-06T19:11:40.100Z|info : amplify version core  
+2023-03-06T19:26:27.579Z|info : amplify configure core  
+2023-03-06T19:26:27.637Z|info : amplify-cli-core.banner-message/index.ts.fetch banner messages from https://aws-amplify.github.io/amplify-cli/banner-message.json({}
+2023-03-06T19:30:30.195Z|info : amplify-provider-awscloudformation.system-config-manager.setProfile.credentialsFilePathExists(["C:\\Users\\Warre\\.aws\\credentials"])
+2023-03-06T19:30:30.196Z|info : amplify-provider-awscloudformation.system-config-manager.makeFileOwnerReadWrite(["C:\\Users\\Warre\\.aws\\credentials"])
+2023-03-06T19:30:30.197Z|info : amplify-provider-awscloudformation.system-config-manager.setProfile.configFilePathExists(["C:\\Users\\Warre\\.aws\\config"])
+2023-03-06T19:30:30.197Z|info : amplify-provider-awscloudformation.system-config-manager.makeFileOwnerReadWrite(["C:\\Users\\Warre\\.aws\\config"])
+2023-03-06T19:30:30.197Z|info : amplify-provider-awscloudformation.system-config-manager.setProfile.writeCredentialsFilePath(["C:\\Users\\Warre\\.aws\\credentials"])
+2023-03-06T19:36:34.015Z|info : amplify pull core  {"appId":"[***]ajy6a2","envName":"[***]ing","yes":false}
+2023-03-06T19:36:34.058Z|info : amplify-cli-core.banner-message/index.ts.fetch banner messages from https://aws-amplify.github.io/amplify-cli/banner-message.json({}
+2023-03-06T19:36:49.616Z|error : Creating a nested amplify project is not supported
+NestedProjectInitError: Creating a nested amplify project is not supported
