@@ -37,11 +37,11 @@
             <form class="login-card-form">
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">mail</span>
-                    <input type="text" placeholder="Enter Email" id="email" required autofocus>
+                    <input type="text" placeholder="Enter Email" id="emailId" required autofocus>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">lock</span>
-                    <input type="password" placeholder="Enter Password" id="password" required>
+                    <input type="password" placeholder="Enter Password" id="passwordId" required>
                 </div>
                 <div class="form-item-other">
                     <div class="checkbox">
@@ -50,7 +50,7 @@
                     </div>
                     <a href="#">I forgot my password</a>
                 </div>
-                <button id="mainbutton" type="submit"> Log in </button>
+                <button id="mainbutton" onclick="loginButton" type="submit"> Log in </button>
             </form>
             <div class="login-card-footer">
                 Don't have an account? <a href="#">Create an account</a>.
@@ -83,8 +83,8 @@
         var poolData;
 
         function loginButton() {
-            email = document.getElementById("email").value;
-            password = document.getElementById("password").value;
+            email = document.getElementById("emailId").value;
+            password = document.getElementById("passwordId").value;
             poolData = {
                 UserPoolId: _config.cognito.userPoolId,
                 ClientId: _config.cognito.userPoolClientId
@@ -110,6 +110,33 @@
                 onFailure: function (err) {
                     alert(err.message || JSON.stringify(err));
                 },
+            });
+        }
+
+        function forgotPassword() {
+            email = document.getElementById("emailId").value;
+            poolData = {
+                UserPoolId: _config.cognito.userPoolId,
+                ClientId: _config.cognito.userPoolClientId
+            };
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+            var userData = {
+                Username: email,
+                Pool: userPool
+            };
+            var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            cognitoUser.forgotPassword({
+                onSuccess: function (result) {
+                    console.log('call result: ' + result);
+                },
+                onFailure: function (err) {
+                    alert(err.message || JSON.stringify(err));
+                },
+                inputVerificationCode() {
+                    var verificationCode = prompt('Please input verification code ' , '');
+                    var newPassword = prompt('Enter new password ' , '');
+                    cognitoUser.confirmPassword(verificationCode, newPassword, this);
+                }
             });
         }
 
