@@ -268,7 +268,12 @@ nav ul li a:hover:before {
     padding-bottom: 0px;
 }
 
-button.back-btn {
+.back-btn {
     padding: 0%;
     margin: 0%;
+}
+
+.back-btn p {
+    text-align: center;
+    font-size: large;
 }
