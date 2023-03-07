@@ -39,7 +39,7 @@
             <form class="login-card-form">
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">mail</span>
-                    <input type="text" placeholder="Enter Email" id="emailId" required autofocus>
+                    <input type="email" placeholder="Enter Email" id="emailId" required autofocus>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">lock</span>
@@ -90,7 +90,7 @@
             password = document.getElementById("passwordId").value;
             poolData = {
                 UserPoolId: _config.cognito.userPoolId,
-                ClientId: _config.cognito.userPoolClientId
+                ClientId: _config.cognito.ClientId
             };
             var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
             var authenticationData = {
@@ -120,7 +120,7 @@
             email = document.getElementById("emailId").value;
             poolData = {
                 UserPoolId: _config.cognito.userPoolId,
-                ClientId: _config.cognito.userPoolClientId
+                ClientId: _config.cognito.ClientId
             };
             var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
             var userData = {
