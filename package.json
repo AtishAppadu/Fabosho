@@ -6,5 +6,23 @@
   },
   "devDependencies": {
     "webpack-cli": "^5.0.1"
-  }
+  },
+  "name": "faboshov2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Warrenboy1/Fabosho.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Warrenboy1/Fabosho/issues"
+  },
+  "homepage": "https://github.com/Warrenboy1/Fabosho#readme",
+  "description": ""
 }
