@@ -75,18 +75,66 @@
 
 
     <script>
-    import { Auth } from 'aws-amplify';
 
-    var email = document.getElementById("emailId").value;
-    var password = document.getElementById("passwordId").value;
+        import * as AWS from 'aws-sdk/global';
+        import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js';
+        import { config } from './config.js';
+        import * as AWSe from './aws-exports';
 
-        async function loginButton() {
-            try {
-                const user = await Auth.signIn(email, password);
-                window.location = "index.html"; // Redirecting to other page.
-            } catch (error) {
-                console.log('error signing in', error);
-            }
+        function loginButton() {
+
+            var authenticationData = {
+                Username : document.getElementById("emailId").value,
+                Password : document.getElementById("passwordId").value,
+            };
+        
+            var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
+                authenticationData
+            );
+        
+            
+            var poolData = {
+                UserPoolId : AWSe.aws_user_pools_id, // Your user pool id here
+                ClientId : AWSe.aws_user_pools_web_client_id // Your client id here
+            }; 
+        
+            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+            var userData = {
+                Username : document.getElementById("emailId").value,
+                Pool : userPool
+            };
+        
+            var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
+            cognitoUser.authenticateUser(authenticationDetails, {
+                onSuccess: function (result) {
+                    var accessToken = result.getAccessToken().getJwtToken();
+        
+                    AWS.config.region = _config.cognito.region;
+        
+                    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                        IdentityPoolId : AWSe.aws_cognito_identity_pool_id, // your identity pool id here
+                        Logins : {
+                            'cognito-idp.eu-west-2.amazonaws.com/eu-west-2_dFTg6o34G' // change /encrypt to your region and user pool id
+                            : result.getIdToken().getJwtToken(),
+                        },
+                    });
+        
+                    AWS.config.credentials.refresh(error => {
+                        if (error) {
+                            console.error(error);
+                        } else {
+                            console.log('Successfully logged!');
+                            window.location = "index.html";
+                        }
+                    });
+                },
+        
+                onFailure: function(err) {
+                    alert(err.message || JSON.stringify(err));
+                },
+        
+                
+            });
         }
 
     </script>
