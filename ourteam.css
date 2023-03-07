@@ -115,15 +115,39 @@ h2 {
 
 .title {
     margin-top: 20px;
+    font-size: 20px;
+    color: grey;
 }
 
 .title2 {
     margin-top: 20px;
+    font-size: 20px;
+    color: grey;
 }
 
 .title {
     color: grey;
     font-size: 18px;
+}
+
+.icons {
+    align-items: center;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.fa-instagram {
+    padding: 5px;
+    padding-left: 30px;
+}
+
+.fa-twitter {
+    padding: 5px;
+    padding-right: 30px;
+}
+
+.fa-linkedin {
+    padding: 5px;
 }
 
 button {
