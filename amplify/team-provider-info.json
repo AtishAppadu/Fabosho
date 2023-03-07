@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "faboshov29e0dfa42": {}
+        "faboshov29e0dfa42": {},
+        "userPoolGroups": {}
       }
     }
   }
