@@ -231,6 +231,11 @@ nav ul li a:hover:before {
     width: 35%;
 }
 
+nav ul li a:hover {
+    text-decoration: none;
+    color: black;
+}
+
 .primary-cta:hover {
     background: #e2d1bd;
     text-decoration: none;
