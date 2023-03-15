@@ -75,6 +75,7 @@
 
 
     <script>
+        // Function to handle the login process
         function loginButton() {
           let emailId = document.getElementById('emailId').value;
           let passwordId = document.getElementById('passwordId').value;
@@ -123,91 +124,6 @@
       </script>
 
 
-    <!-- Necessary Dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/amazon-cognito-identity-js/3.1.2/amazon-cognito-identity.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aws-sdk/2.194.0/aws-sdk.min.js"></script>
-
-        <!-- Login Script -->
-        <script>
-            // Import necessary dependencies
-            import * as AWS from 'aws-sdk/global';
-            import * as AmazonCognitoIdentity from 'amazon-cognito-identity-js';
-            import { config } from './config.js';
-            import * as AWSe from './aws-exports';
-    
-        // Function to handle the login process
-        function loginButton() {
-    
-            // Get the user's credentials from the login form
-            var authenticationData = {
-                Username : document.getElementById("emailId").value,
-                Password : document.getElementById("passwordId").value,
-            };
-            window.location = "index.html";
-
-            // Create an AuthenticationDetails object with the user's credentials
-            var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails(
-                authenticationData
-            );
-    
-            // Get the User Pool id and Client id from the AWS exports
-            var poolData = {
-                UserPoolId : AWSe.aws_user_pools_id,
-                ClientId : AWSe.aws_user_pools_web_client_id
-            }; 
-    
-            // Create a new User Pool
-            var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-    
-            // Create a new Cognito User with the user's username
-            var userData = {
-                Username : document.getElementById("emailId").value,
-                Pool : userPool
-            };
-            
-            // Create a new CognitoUser object
-            var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
-    
-            // Authenticate the user with the AuthenticationDetails object
-            cognitoUser.authenticateUser(authenticationDetails, {
-                onSuccess: function (result) {
-                    // On successful authentication, get the Access Token
-                    var accessToken = result.getAccessToken().getJwtToken();
-    
-                    // Set the region for the credentials object 
-                    AWS.config.region = _config.cognito.region;
-    
-                    // Create a new CognitoIdentityCredentials object
-                    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-                        IdentityPoolId : AWSe.aws_cognito_identity_pool_id, 
-                        Logins : {
-                            'cognito-idp.eu-west-2.amazonaws.com/eu-west-2_dFTg6o34G' : result.getIdToken().getJwtToken(),
-                        },
-                    });
-    
-                    // Refresh the credentials to retrieve the Access Key and Secret Key
-                    AWS.config.credentials.refresh(error => {
-                        if (error) {
-                            // If there is an error refreshing the credentials, log the error
-                            console.error(error);
-                        } else {
-                            // If the credentials are successfully refreshed, redirect the user
-                            console.log('Successfully logged!');
-                            window.location = "index.html";
-                        }
-                    });
-                },
-    
-                onFailure: function(err) {
-                    // If there is an error with the authentication, display an alert
-                    alert(err.message || JSON.stringify(err));
-                },
-    
-                
-            });
-        }
-    
-    </script>
 </body>
 
 </html>
