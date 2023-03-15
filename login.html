@@ -75,6 +75,58 @@
         </div>
     </div>
 
+    <script>
+        // Function to handle the login process
+        function loginButton() {
+          let emailId = document.getElementById('emailId').value;
+          let passwordId = document.getElementById('passwordId').value;
+          let rememberMeCheckbox = document.getElementById('rememberMeCheckbox').checked;
+      
+          // Validate email address and password 
+          if (emailId == '' || passwordId == '') {
+            alert('Please enter a valid email address and password');
+            return;
+          }
+      
+          // Authenticate user 
+          AWS.config.region = 'eu-west-2'; // Region
+          AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'eu-west-2:b2fe2a4d-95a1-4c9c-94a8-d1630f8226a4'
+          });
+          let authenticationData = {
+            Username: emailId,
+            Password: passwordId
+          };
+          let authenticationDetails = new AWS.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
+          let poolData = {
+            UserPoolId: 'eu-west-2_dFTg6o34G',
+            ClientId: '4bdnlrt9gfpgou2asb4fk9vd9q'
+          };
+          let userPool = new AWS.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+          let userData = {
+            Username: emailId,
+            Pool: userPool
+          };
+          let cognitoUser = new AWS.CognitoIdentityServiceProvider.CognitoUser(userData);
+          cognitoUser.authenticateUser(authenticationDetails, {
+            onSuccess: function (result) {
+              // Redirect to home page
+              window.location.href = 'index.html';
+            },
+            onFailure: function (err) {
+              alert('Incorrect email address or password');
+            },
+            newPasswordRequired: function (userAttributes, requiredAttributes) {
+              delete userAttributes.email_verified;
+              cognitoUser.completeNewPasswordChallenge(passwordId, userAttributes, this);
+            }
+          });
+        }
+      </script>
+
+
 </body>
+
+
 
 </html>
