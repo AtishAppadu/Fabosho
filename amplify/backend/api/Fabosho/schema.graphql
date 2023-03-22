@@ -1,0 +1,35 @@
+type Color {
+  Red: String
+  Blue: String
+  Black: String
+}
+
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  product_name: String
+  product_description: String
+  product_color: Color
+  product_price: String
+  product_size: String
+  product_details: String
+  headarticlesID: ID! @index(name: "byHeadArticles")
+}
+
+type HeadArticles @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  product_name: String
+  Head_Products: [Product] @hasMany(indexName: "byHeadArticles", fields: ["id"])
+}
+
+type Post @model {
+  id: ID!
+  title: String!
+  status: PostStatus!
+  rating: Int
+  content: String
+}
+
+enum PostStatus {
+  ACTIVE
+  INACTIVE
+}
