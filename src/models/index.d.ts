@@ -20,6 +20,36 @@ export declare type Color = LazyLoading extends LazyLoadingDisabled ? EagerColor
 
 export declare const Color: (new (init: ModelInit<Color>) => Color)
 
+type EagerTopArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<TopArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly product_name?: string | null;
+  readonly product_type?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyTopArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<TopArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly product_name?: string | null;
+  readonly product_type?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type TopArticles = LazyLoading extends LazyLoadingDisabled ? EagerTopArticles : LazyTopArticles
+
+export declare const TopArticles: (new (init: ModelInit<TopArticles>) => TopArticles) & {
+  copyOf(source: TopArticles, mutator: (draft: MutableModel<TopArticles>) => MutableModel<TopArticles> | void): TopArticles;
+}
+
 type EagerProduct = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Product, 'id'>;
@@ -27,11 +57,15 @@ type EagerProduct = {
   };
   readonly id: string;
   readonly product_name?: string | null;
+  readonly product_type?: string | null;
   readonly product_description?: string | null;
-  readonly product_color?: Color | null;
   readonly product_price?: string | null;
+  readonly product_image?: string | null;
+  readonly product_color?: Color | null;
   readonly product_size?: string | null;
-  readonly product_details?: string | null;
+  readonly Material?: string | null;
+  readonly Quantity?: number | null;
+  readonly Brand?: string | null;
   readonly headarticlesID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -44,11 +78,15 @@ type LazyProduct = {
   };
   readonly id: string;
   readonly product_name?: string | null;
+  readonly product_type?: string | null;
   readonly product_description?: string | null;
-  readonly product_color?: Color | null;
   readonly product_price?: string | null;
+  readonly product_image?: string | null;
+  readonly product_color?: Color | null;
   readonly product_size?: string | null;
-  readonly product_details?: string | null;
+  readonly Material?: string | null;
+  readonly Quantity?: number | null;
+  readonly Brand?: string | null;
   readonly headarticlesID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -68,6 +106,7 @@ type EagerHeadArticles = {
   readonly id: string;
   readonly product_name?: string | null;
   readonly Head_Products?: (Product | null)[] | null;
+  readonly product_type?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -80,6 +119,7 @@ type LazyHeadArticles = {
   readonly id: string;
   readonly product_name?: string | null;
   readonly Head_Products: AsyncCollection<Product>;
+  readonly product_type?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
