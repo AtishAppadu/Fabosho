@@ -5,20 +5,128 @@ import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/
 
 
 type EagerColor = {
-  readonly Red?: string | null;
-  readonly Blue?: string | null;
-  readonly Black?: string | null;
+  readonly ColorID?: string | null;
+  readonly ColorName?: string | null;
+  readonly ColorHex?: number | null;
 }
 
 type LazyColor = {
-  readonly Red?: string | null;
-  readonly Blue?: string | null;
-  readonly Black?: string | null;
+  readonly ColorID?: string | null;
+  readonly ColorName?: string | null;
+  readonly ColorHex?: number | null;
 }
 
 export declare type Color = LazyLoading extends LazyLoadingDisabled ? EagerColor : LazyColor
 
 export declare const Color: (new (init: ModelInit<Color>) => Color)
+
+type EagerShoesArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<ShoesArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly ShoesArticleName?: string | null;
+  readonly ShoesArticlePrice?: number | null;
+  readonly ShoesArticleDescription?: string | null;
+  readonly ShoesArticleImage?: string | null;
+  readonly Shoes_Products?: (Product | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyShoesArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<ShoesArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly ShoesArticleName?: string | null;
+  readonly ShoesArticlePrice?: number | null;
+  readonly ShoesArticleDescription?: string | null;
+  readonly ShoesArticleImage?: string | null;
+  readonly Shoes_Products: AsyncCollection<Product>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type ShoesArticles = LazyLoading extends LazyLoadingDisabled ? EagerShoesArticles : LazyShoesArticles
+
+export declare const ShoesArticles: (new (init: ModelInit<ShoesArticles>) => ShoesArticles) & {
+  copyOf(source: ShoesArticles, mutator: (draft: MutableModel<ShoesArticles>) => MutableModel<ShoesArticles> | void): ShoesArticles;
+}
+
+type EagerBottomArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<BottomArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly BottomArticleName?: string | null;
+  readonly BottomArticlePrice?: number | null;
+  readonly BottomArticleDescription?: string | null;
+  readonly BottomArticleImage?: string | null;
+  readonly Bottom_Products?: (Product | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyBottomArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<BottomArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly BottomArticleName?: string | null;
+  readonly BottomArticlePrice?: number | null;
+  readonly BottomArticleDescription?: string | null;
+  readonly BottomArticleImage?: string | null;
+  readonly Bottom_Products: AsyncCollection<Product>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type BottomArticles = LazyLoading extends LazyLoadingDisabled ? EagerBottomArticles : LazyBottomArticles
+
+export declare const BottomArticles: (new (init: ModelInit<BottomArticles>) => BottomArticles) & {
+  copyOf(source: BottomArticles, mutator: (draft: MutableModel<BottomArticles>) => MutableModel<BottomArticles> | void): BottomArticles;
+}
+
+type EagerTopArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<TopArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly TopArticleName?: string | null;
+  readonly TopArticlePrice?: number | null;
+  readonly TopArticleDescription?: string | null;
+  readonly TopArticleImage?: string | null;
+  readonly Top_Products?: (Product | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyTopArticles = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<TopArticles, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly TopArticleName?: string | null;
+  readonly TopArticlePrice?: number | null;
+  readonly TopArticleDescription?: string | null;
+  readonly TopArticleImage?: string | null;
+  readonly Top_Products: AsyncCollection<Product>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type TopArticles = LazyLoading extends LazyLoadingDisabled ? EagerTopArticles : LazyTopArticles
+
+export declare const TopArticles: (new (init: ModelInit<TopArticles>) => TopArticles) & {
+  copyOf(source: TopArticles, mutator: (draft: MutableModel<TopArticles>) => MutableModel<TopArticles> | void): TopArticles;
+}
 
 type EagerProduct = {
   readonly [__modelMeta__]: {
@@ -27,12 +135,15 @@ type EagerProduct = {
   };
   readonly id: string;
   readonly product_name?: string | null;
+  readonly product_type?: string | null;
   readonly product_description?: string | null;
+  readonly product_price?: number | null;
+  readonly product_image?: string | null;
   readonly product_color?: Color | null;
-  readonly product_price?: string | null;
-  readonly product_size?: string | null;
-  readonly product_details?: string | null;
   readonly headarticlesID: string;
+  readonly toparticlesID: string;
+  readonly bottomarticlesID: string;
+  readonly shoesarticlesID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -44,12 +155,15 @@ type LazyProduct = {
   };
   readonly id: string;
   readonly product_name?: string | null;
+  readonly product_type?: string | null;
   readonly product_description?: string | null;
+  readonly product_price?: number | null;
+  readonly product_image?: string | null;
   readonly product_color?: Color | null;
-  readonly product_price?: string | null;
-  readonly product_size?: string | null;
-  readonly product_details?: string | null;
   readonly headarticlesID: string;
+  readonly toparticlesID: string;
+  readonly bottomarticlesID: string;
+  readonly shoesarticlesID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -66,8 +180,11 @@ type EagerHeadArticles = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly product_name?: string | null;
+  readonly HeadArticleName?: string | null;
   readonly Head_Products?: (Product | null)[] | null;
+  readonly HeadArticlePrice?: number | null;
+  readonly HeadArticleDescription?: string | null;
+  readonly HeadArticleImage?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -78,8 +195,11 @@ type LazyHeadArticles = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly product_name?: string | null;
+  readonly HeadArticleName?: string | null;
   readonly Head_Products: AsyncCollection<Product>;
+  readonly HeadArticlePrice?: number | null;
+  readonly HeadArticleDescription?: string | null;
+  readonly HeadArticleImage?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

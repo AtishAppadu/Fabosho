@@ -1,35 +1,56 @@
+type ShoesArticles @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ShoesArticleName: String
+  ShoesArticlePrice: Int
+  ShoesArticleDescription: String
+  ShoesArticleImage: String
+  Shoes_Products: [Product] @hasMany(indexName: "byShoesArticles", fields: ["id"])
+}
+
+type BottomArticles @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  BottomArticleName: String
+  BottomArticlePrice: Int
+  BottomArticleDescription: String
+  BottomArticleImage: String
+  Bottom_Products: [Product] @hasMany(indexName: "byBottomArticles", fields: ["id"])
+}
+
+type TopArticles @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TopArticleName: String
+  TopArticlePrice: Int
+  TopArticleDescription: String
+  TopArticleImage: String
+  Top_Products: [Product] @hasMany(indexName: "byTopArticles", fields: ["id"])
+}
+
 type Color {
-  Red: String
-  Blue: String
-  Black: String
+  ColorID: ID
+  ColorName: String
+  ColorHex: Int
 }
 
 type Product @model @auth(rules: [{allow: public}]) {
   id: ID!
   product_name: String
+  product_type: String
   product_description: String
+  product_price: Int
+  product_image: AWSURL
   product_color: Color
-  product_price: String
-  product_size: String
-  product_details: String
   headarticlesID: ID! @index(name: "byHeadArticles")
+  toparticlesID: ID! @index(name: "byTopArticles")
+  bottomarticlesID: ID! @index(name: "byBottomArticles")
+  shoesarticlesID: ID! @index(name: "byShoesArticles")
 }
 
 type HeadArticles @model @auth(rules: [{allow: public}]) {
   id: ID!
-  product_name: String
+  HeadArticleName: String
   Head_Products: [Product] @hasMany(indexName: "byHeadArticles", fields: ["id"])
+  HeadArticlePrice: Int
+  HeadArticleDescription: String
+  HeadArticleImage: AWSURL
 }
-
-type Post @model {
-  id: ID!
-  title: String!
-  status: PostStatus!
-  rating: Int
-  content: String
-}
-
-enum PostStatus {
-  ACTIVE
-  INACTIVE
-}
+ 

@@ -21,5 +21,16 @@ export type AmplifyDependentResourcesAttributes = {
       "GraphQLAPIKeyOutput": "string"
 >>>>>>> fac486fa25d18bf51c8ebb48a61ad58c90c9ef91
     }
+  },
+  "auth": {
+    "Fabosho": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolArn": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    }
   }
 }
