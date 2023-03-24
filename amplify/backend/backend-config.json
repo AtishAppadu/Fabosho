@@ -1,29 +1,26 @@
 {
-  "auth": {
-    "faboshov29e0dfa42": {
-      "customAuth": false,
+  "api": {
+    "Fabosho": {
       "dependsOn": [],
-      "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
-        },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-03-20T09:29:03.961Z",
+              "apiKeyExpirationDays": 365,
+              "description": "FaboshoAPIkey"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
       },
       "providerPlugin": "awscloudformation",
+<<<<<<< HEAD
       "service": "Cognito"
     },
     "userPoolGroups": {
@@ -41,6 +38,10 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Cognito-UserPool-Groups"
+=======
+      "service": "AppSync"
+>>>>>>> fac486fa25d18bf51c8ebb48a61ad58c90c9ef91
     }
-  }
+  },
+  "auth": {}
 }
