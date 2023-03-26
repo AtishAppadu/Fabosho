@@ -39,9 +39,6 @@ type Product @model @auth(rules: [{allow: public}]) {
   product_price: Int
   product_image: AWSURL!
   product_color: Color
-  toparticlesID: ID @index(name: "byTopArticles")
-  bottomarticlesID: ID @index(name: "byBottomArticles")
-  shoesarticlesID: ID @index(name: "byShoesArticles")
   headarticless: [HeadArticles] @manyToMany(relationName: "HeadArticlesProduct")
   toparticless: [TopArticles] @manyToMany(relationName: "TopArticlesProduct")
   bottomarticless: [BottomArticles] @manyToMany(relationName: "BottomArticlesProduct")
