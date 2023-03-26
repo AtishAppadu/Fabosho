@@ -56,9 +56,9 @@ type HeadArticles @model @auth(rules: [{allow: public}]) {
  
 type TestArticles @model @auth(rules: [{allow: public}]) {
   id: ID!
-  HeadArticleName: String
-  Head_Products: [Product] @hasMany(indexName: "byHeadArticles", fields: ["id"])
-  HeadArticlePrice: Int
-  HeadArticleDescription: String
-  HeadArticleImage: AWSURL
+  TestArticleName: String
+  Test_Products: [Product] @hasMany(indexName: "byTestArticles", fields: ["id"])
+  TestArticlePrice: Int
+  TestArticleDescription: String
+  TestArticleImage: AWSURL
 }
