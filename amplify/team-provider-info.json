@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "Fabosho": {}
+      },
+      "storage": {
+        "fabosho1a88b6d8": {
+          "bucketName": "fabocsv",
+          "region": "eu-west-2"
+        }
       }
     }
   },

@@ -42,7 +42,7 @@ export const schema = {
                     "name": "Shoes_Products",
                     "isArray": true,
                     "type": {
-                        "model": "Product"
+                        "model": "ShoesArticlesProduct"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -50,7 +50,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "shoesarticlesID"
+                            "shoesArticles"
                         ]
                     }
                 },
@@ -138,7 +138,7 @@ export const schema = {
                     "name": "Bottom_Products",
                     "isArray": true,
                     "type": {
-                        "model": "Product"
+                        "model": "BottomArticlesProduct"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -146,7 +146,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "bottomarticlesID"
+                            "bottomArticles"
                         ]
                     }
                 },
@@ -234,7 +234,7 @@ export const schema = {
                     "name": "Top_Products",
                     "isArray": true,
                     "type": {
-                        "model": "Product"
+                        "model": "TopArticlesProduct"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -242,7 +242,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "toparticlesID"
+                            "topArticles"
                         ]
                     }
                 },
@@ -302,14 +302,14 @@ export const schema = {
                     "name": "product_name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "product_type": {
                     "name": "product_type",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "product_description": {
@@ -330,7 +330,7 @@ export const schema = {
                     "name": "product_image",
                     "isArray": false,
                     "type": "AWSURL",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "product_color": {
@@ -342,33 +342,90 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "headarticlesID": {
-                    "name": "headarticlesID",
-                    "isArray": false,
-                    "type": "ID",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "toparticlesID": {
                     "name": "toparticlesID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "bottomarticlesID": {
                     "name": "bottomarticlesID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "shoesarticlesID": {
                     "name": "shoesarticlesID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
+                },
+                "headarticless": {
+                    "name": "headarticless",
+                    "isArray": true,
+                    "type": {
+                        "model": "HeadArticlesProduct"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "product"
+                        ]
+                    }
+                },
+                "toparticless": {
+                    "name": "toparticless",
+                    "isArray": true,
+                    "type": {
+                        "model": "TopArticlesProduct"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "product"
+                        ]
+                    }
+                },
+                "bottomarticless": {
+                    "name": "bottomarticless",
+                    "isArray": true,
+                    "type": {
+                        "model": "BottomArticlesProduct"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "product"
+                        ]
+                    }
+                },
+                "shoesarticless": {
+                    "name": "shoesarticless",
+                    "isArray": true,
+                    "type": {
+                        "model": "ShoesArticlesProduct"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "product"
+                        ]
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -393,15 +450,6 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byHeadArticles",
-                        "fields": [
-                            "headarticlesID"
-                        ]
-                    }
                 },
                 {
                     "type": "key",
@@ -469,7 +517,7 @@ export const schema = {
                     "name": "Head_Products",
                     "isArray": true,
                     "type": {
-                        "model": "Product"
+                        "model": "HeadArticlesProduct"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -477,7 +525,7 @@ export const schema = {
                     "association": {
                         "connectionType": "HAS_MANY",
                         "associatedWith": [
-                            "headarticlesID"
+                            "headArticles"
                         ]
                     }
                 },
@@ -543,6 +591,398 @@ export const schema = {
                     }
                 }
             ]
+        },
+        "ShoesArticlesProduct": {
+            "name": "ShoesArticlesProduct",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "shoesArticlesId": {
+                    "name": "shoesArticlesId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "productId": {
+                    "name": "productId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "shoesArticles": {
+                    "name": "shoesArticles",
+                    "isArray": false,
+                    "type": {
+                        "model": "ShoesArticles"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "shoesArticlesId"
+                        ]
+                    }
+                },
+                "product": {
+                    "name": "product",
+                    "isArray": false,
+                    "type": {
+                        "model": "Product"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "productId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "ShoesArticlesProducts",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byShoesArticles",
+                        "fields": [
+                            "shoesArticlesId"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byProduct",
+                        "fields": [
+                            "productId"
+                        ]
+                    }
+                }
+            ]
+        },
+        "BottomArticlesProduct": {
+            "name": "BottomArticlesProduct",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "bottomArticlesId": {
+                    "name": "bottomArticlesId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "productId": {
+                    "name": "productId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "bottomArticles": {
+                    "name": "bottomArticles",
+                    "isArray": false,
+                    "type": {
+                        "model": "BottomArticles"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "bottomArticlesId"
+                        ]
+                    }
+                },
+                "product": {
+                    "name": "product",
+                    "isArray": false,
+                    "type": {
+                        "model": "Product"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "productId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "BottomArticlesProducts",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byBottomArticles",
+                        "fields": [
+                            "bottomArticlesId"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byProduct",
+                        "fields": [
+                            "productId"
+                        ]
+                    }
+                }
+            ]
+        },
+        "TopArticlesProduct": {
+            "name": "TopArticlesProduct",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "topArticlesId": {
+                    "name": "topArticlesId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "productId": {
+                    "name": "productId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "topArticles": {
+                    "name": "topArticles",
+                    "isArray": false,
+                    "type": {
+                        "model": "TopArticles"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "topArticlesId"
+                        ]
+                    }
+                },
+                "product": {
+                    "name": "product",
+                    "isArray": false,
+                    "type": {
+                        "model": "Product"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "productId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "TopArticlesProducts",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byTopArticles",
+                        "fields": [
+                            "topArticlesId"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byProduct",
+                        "fields": [
+                            "productId"
+                        ]
+                    }
+                }
+            ]
+        },
+        "HeadArticlesProduct": {
+            "name": "HeadArticlesProduct",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "productId": {
+                    "name": "productId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "headArticlesId": {
+                    "name": "headArticlesId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "product": {
+                    "name": "product",
+                    "isArray": false,
+                    "type": {
+                        "model": "Product"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "productId"
+                        ]
+                    }
+                },
+                "headArticles": {
+                    "name": "headArticles",
+                    "isArray": false,
+                    "type": {
+                        "model": "HeadArticles"
+                    },
+                    "isRequired": true,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetNames": [
+                            "headArticlesId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "HeadArticlesProducts",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byProduct",
+                        "fields": [
+                            "productId"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byHeadArticles",
+                        "fields": [
+                            "headArticlesId"
+                        ]
+                    }
+                }
+            ]
         }
     },
     "enums": {},
@@ -575,5 +1015,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.3.6",
-    "version": "fa4a887425a7cfa6fefab96de46f8e91"
+    "version": "a1eaa3cce8fbd40b2b64d0ed0c7de992"
 };

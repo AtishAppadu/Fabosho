@@ -4,7 +4,7 @@ type ShoesArticles @model @auth(rules: [{allow: public}]) {
   ShoesArticlePrice: Int
   ShoesArticleDescription: String
   ShoesArticleImage: String
-  Shoes_Products: [Product] @hasMany(indexName: "byShoesArticles", fields: ["id"])
+  Shoes_Products: [Product] @manyToMany(relationName: "ShoesArticlesProduct")
 }
 
 type BottomArticles @model @auth(rules: [{allow: public}]) {
@@ -13,7 +13,7 @@ type BottomArticles @model @auth(rules: [{allow: public}]) {
   BottomArticlePrice: Int
   BottomArticleDescription: String
   BottomArticleImage: String
-  Bottom_Products: [Product] @hasMany(indexName: "byBottomArticles", fields: ["id"])
+  Bottom_Products: [Product] @manyToMany(relationName: "BottomArticlesProduct")
 }
 
 type TopArticles @model @auth(rules: [{allow: public}]) {
@@ -22,7 +22,7 @@ type TopArticles @model @auth(rules: [{allow: public}]) {
   TopArticlePrice: Int
   TopArticleDescription: String
   TopArticleImage: String
-  Top_Products: [Product] @hasMany(indexName: "byTopArticles", fields: ["id"])
+  Top_Products: [Product] @manyToMany(relationName: "TopArticlesProduct")
 }
 
 type Color {
@@ -33,23 +33,27 @@ type Color {
 
 type Product @model @auth(rules: [{allow: public}]) {
   id: ID!
-  product_name: String
-  product_type: String
+  product_name: String!
+  product_type: String!
   product_description: String
   product_price: Int
-  product_image: AWSURL
+  product_image: AWSURL!
   product_color: Color
-  headarticlesID: ID! @index(name: "byHeadArticles")
-  toparticlesID: ID! @index(name: "byTopArticles")
-  bottomarticlesID: ID! @index(name: "byBottomArticles")
-  shoesarticlesID: ID! @index(name: "byShoesArticles")
+  toparticlesID: ID @index(name: "byTopArticles")
+  bottomarticlesID: ID @index(name: "byBottomArticles")
+  shoesarticlesID: ID @index(name: "byShoesArticles")
+  headarticless: [HeadArticles] @manyToMany(relationName: "HeadArticlesProduct")
+  toparticless: [TopArticles] @manyToMany(relationName: "TopArticlesProduct")
+  bottomarticless: [BottomArticles] @manyToMany(relationName: "BottomArticlesProduct")
+  shoesarticless: [ShoesArticles] @manyToMany(relationName: "ShoesArticlesProduct")
 }
 
 type HeadArticles @model @auth(rules: [{allow: public}]) {
   id: ID!
   HeadArticleName: String
-  Head_Products: [Product] @hasMany(indexName: "byHeadArticles", fields: ["id"])
+  Head_Products: [Product] @manyToMany(relationName: "HeadArticlesProduct")
   HeadArticlePrice: Int
   HeadArticleDescription: String
   HeadArticleImage: AWSURL
 }
+ 
