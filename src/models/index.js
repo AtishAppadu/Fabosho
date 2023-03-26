@@ -4,7 +4,7 @@ import { schema } from './schema';
 
 
 
-const { ShoesArticles, BottomArticles, TopArticles, Product, HeadArticles, Color } = initSchema(schema);
+const { ShoesArticles, BottomArticles, TopArticles, Product, HeadArticles, ShoesArticlesProduct, BottomArticlesProduct, TopArticlesProduct, HeadArticlesProduct, Color } = initSchema(schema);
 
 export {
   ShoesArticles,
@@ -12,5 +12,9 @@ export {
   TopArticles,
   Product,
   HeadArticles,
+  ShoesArticlesProduct,
+  BottomArticlesProduct,
+  TopArticlesProduct,
+  HeadArticlesProduct,
   Color
 };
