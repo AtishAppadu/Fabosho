@@ -97,7 +97,7 @@ const weather = () => {
   </div>
 </section>
         </div>
-    );
+    )
 }
 
 export default weather
