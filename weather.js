@@ -99,3 +99,5 @@ const weather = () => {
         </div>
     );
 }
+
+export default weather;
