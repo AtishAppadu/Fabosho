@@ -37,7 +37,24 @@
         </header>
 
         <main>
-
+            <div id = "weather-output"></div>
+            
+            <script>
+                const params = {
+                  access_key: '6f9749a966781b751f1b2cf5c7779c24',
+                  query: 'New York'
+                }
+              
+                fetch('https://api.weatherstack.com/current', {
+                  params,
+                })
+                .then(response => response.json())
+                .then(apiResponse => {
+                    const outputElement = document.getElementById('weather-output');
+                    outputElement.innerHTML = `Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}℃`;
+                })
+                .catch(error => console.log(error));
+              </script>
         </main>
 
     </div>
