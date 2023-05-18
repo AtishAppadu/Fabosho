@@ -40,24 +40,27 @@
 
         <main>
             
-            <img id="car"></img>
-
+            <img src="images/clothing1.jpg" id="image" width="300" height="200" ></img>
+            <button onclick="changeImage()">Change Image</button>
         </main>
 
     </div>
 
     <script>
-        const cars = [
+        var images = [
         "clothing1.jpg",
         "clothing2.jpg",
         "clothing3.jpg",
         "mainavatar1.jpg",
         ];
-        let randomIndex = 
+        
+        function changeImage() {
+            let randomIndex = 
             Math.floor(
-                Math.random() * cars.length
+                Math.random() * images.length
             );
-        car.src = cars[randomIndex];
+            Image.src = images[randomIndex];
+        }
     </script>
 
 
