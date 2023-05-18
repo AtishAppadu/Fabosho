@@ -175,7 +175,7 @@ p.details {
 
 .card1 {
     grid-area: left;
-    background-image: url('../images/clothing1.jpg');
+    background-image: url('../images/main1.jpg');
     position: relative;
 }
 
@@ -191,11 +191,11 @@ p.details {
 }
 
 .card2 {
-    background-image: url('../images/clothing2.jpg');
+    background-image: url('../images/main2.jpg');
 }
 
 .card3 {
-    background-image: url('../images/clothing3.jpg');
+    background-image: url('../images/main3.jpg');
 }
 
 .card-details {
