@@ -40,25 +40,10 @@
     </div>
 
     <main>
-            
-            <img src="images/clothing1.jpg" id="image" width="300" height="200" alt="" >
-            <button onclick="changeImage()">Change Image</button>
-        <script>
-            var images = [
-            "images/clothing1.jpg",
-            "images/clothing2.jpg",
-            "images/clothing3.jpg",
-            "images/mainavatar1.jpg",
-        ]
-        
-        function changeImage() {
-            let randomIndex = 
-            Math.floor(
-                Math.random() * images.length
-            );
-            Image.src = images[randomIndex];
-        }
-        </script>
+            <button onclick="generator()">Change Image</button>
+            <div id="divImage"></div>
+            <script src="src/generate.js"></script>
+
     </main>
 
     
