@@ -39,32 +39,31 @@
         </header>
     </div>
 
-    <main>
-        <!-- 2 separate buttons to call for different clothes, they are linked up vertically, 
+    <main>  <!-- 2 separate buttons to call for different clothes, they are linked up vertically, 
             may need to have a re-style of the layout towards the wardrobe-->
-            <button onclick="malegenerator()">Change Images for male</button>
-            <ul>
-                <li><span id="MaleClothingImageCap"></span></li>
-                <li><span id="MaleClothingImageTop"></span></li>
-                <li><span id="MaleClothingImageBottom"></span></li>
-                <li><span id="MaleClothingImageShoes"></span></li>
-            </ul>
-            
-            <div id="MaleClothingImageCap"></div>  
-            <div id="MaleClothingImageTop"></div>
-            <div id="MaleClothingImageBottom"></div>
-            <div id="MaleClothingImageShoes"></div>
-
-            <button onclick="femalegenerator()">Change Image for female</button>
-            <div id="FemaleClothingImageCap"></div>
-            <div id="FemaleClothingImageTop"></div>
-            <div id="FemaleClothingImageBottom"></div>
-            <div id="FemaleClothingImageShoes"></div>
-
-            <script src="src/generate.js"></script>  <!-- This is the script that will generate the images for the wardrobe -->
+        <div style="display: flex; flex-direction: row; justify-content: space-around;">
+            <div>
+                <button onclick="malegenerator()" style="background-color: blue; color: white; font-size: 20px; padding: 10px; border: none; margin: 5px;">Change Images for male</button>
+                <ul style="list-style-type: none; margin-left: -40px;">
+                    <li><span id="MaleClothingImageCap"></span></li>
+                    <li><span id="MaleClothingImageTop"></span></li>
+                    <li><span id="MaleClothingImageBottom"></span></li>
+                    <li><span id="MaleClothingImageShoes"></span></li>
+                </ul>        
+            </div>
+            <div>
+                <button onclick="femalegenerator()" style="background-color: pink; color: white; font-size: 20px; padding: 10px; border: none; margin: 5px;">Change Image for female</button>
+                <ul style="list-style-type: none; margin-left: -40px;">
+                    <li><span id="FemaleClothingImageCap"></span></li>
+                    <li><span id="FemaleClothingImageTop"></span></li>
+                    <li><span id="FemaleClothingImageBottom"></span></li>
+                    <li><span id="FemaleClothingImageShoes"></span></li>
+                </ul>
+            </div>
+        </div>
+        <script src="src/generate.js"></script>     <!-- This is the script that will generate the images for the wardrobe -->
 
     </main>
-
     
 
 
