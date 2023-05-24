@@ -25,40 +25,46 @@
 
             <nav>
                 <ul>
-                    <li> <a href="index.html" class="active">Home </a></li>
-                    <li> <a href="wardrobe.html"> Wardrobe </a></li>
+                    <li> <a href="index.html">Home </a></li>
+                    <li> <a href="wardrobe.html" class="active"> Wardrobe </a></li>
                     <li> <a href="#"> About Us </a></li>
                     <li> <a href="contactus.html"> Contact Us </a></li>
                     <li> <a href="ourteam.html"> Our Team </a></li>
                     <li> <a href="https://fabosho.auth.eu-west-2.amazoncognito.com/login?client_id=4bdnlrt9gfpgou2asb4fk9vd9q&response_type=code&scope=email+openid&redirect_uri=https%3A%2F%2Fmain.d2nepcsaajy6a2.amplifyapp.com%2Findex.html"> Log in </a></li>
                     <!--  <li> <a href="login.html"> Log in </a></li>  -->
+
+                    
                 </ul>
             </nav>
         </header>
-
-        <main>
-            <div id = "weather-output"></div>
-            
-            <script>
-                const params = {
-                  access_key: '6f9749a966781b751f1b2cf5c7779c24',
-                  query: 'New York'
-                }
-              
-                fetch('https://api.weatherstack.com/current', {
-                  params,
-                })
-                .then(response => response.json())
-                .then(apiResponse => {
-                    const outputElement = document.getElementById('weather-output');
-                    outputElement.innerHTML = `Current temperature in ${apiResponse.location.name} is ${apiResponse.current.temperature}℃`;
-                })
-                .catch(error => console.log(error));
-              </script>
-        </main>
-
     </div>
 
+    <main>  <!-- 2 separate buttons to call for different clothes, they are linked up vertically, 
+            may need to have a re-style of the layout towards the wardrobe-->
+        <div style="display: flex; flex-direction: row; justify-content: space-around;">
+            <div>
+                <button onclick="malegenerator()" style="background-color: blue; color: white; font-size: 20px; padding: 10px; border: none; margin: 5px;">Change Images for male</button>
+                <ul style="list-style-type: none; margin-left: -40px;">
+                    <li><span id="MaleClothingImageCap"></span></li>
+                    <li><span id="MaleClothingImageTop"></span></li>
+                    <li><span id="MaleClothingImageBottom"></span></li>
+                    <li><span id="MaleClothingImageShoes"></span></li>
+                </ul>        
+            </div>
+            <div>
+                <button onclick="femalegenerator()" style="background-color: pink; color: white; font-size: 20px; padding: 10px; border: none; margin: 5px;">Change Image for female</button>
+                <ul style="list-style-type: none; margin-left: -40px;">
+                    <li><span id="FemaleClothingImageCap"></span></li>
+                    <li><span id="FemaleClothingImageTop"></span></li>
+                    <li><span id="FemaleClothingImageBottom"></span></li>
+                    <li><span id="FemaleClothingImageShoes"></span></li>
+                </ul>
+            </div>
+        </div>
+        <script src="src/generate.js"></script>     <!-- This is the script that will generate the images for the wardrobe -->
+
+    </main>
+    
 
 
 </body>
