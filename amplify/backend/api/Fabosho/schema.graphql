@@ -54,3 +54,11 @@ type HeadArticles @model @auth(rules: [{allow: public}]) {
   HeadArticleImage: AWSURL
 }
  
+type TestArticles @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  TestArticleName: String
+  Test_Products: [Product] @hasMany(indexName: "byTestArticles", fields: ["id"])
+  TestArticlePrice: Int
+  TestArticleDescription: String
+  TestArticleImage: AWSURL
+}
